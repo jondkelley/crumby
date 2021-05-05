@@ -3,7 +3,7 @@
 import os
 import warnings
 import datetime
-import urllib
+import urllib.request
 import hashlib
 import gzip
 from sqlalchemy.exc import IntegrityError
@@ -20,10 +20,10 @@ def view_env():
 
 def update_geoip(path):
     url = 'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.md5'
-    md5 = urllib.urlopen(url).read()
+    md5 = urllib.request.urlopen(url).read()
 
     url = 'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz'
-    tempfile, headers = urllib.urlretrieve(url)
+    tempfile, headers = urllib.request.urlretrieve(url)
 
     with gzip.open(tempfile, 'rb') as f:
         file_content = f.read()

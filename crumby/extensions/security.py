@@ -1,14 +1,13 @@
 """Custom Flask extensions / snippets."""
 
 from datetime import timedelta
-from urlparse import urlparse
-from urlparse import urljoin
+from urllib.parse import urlparse
+from urllib.parse import urljoin
 from flask import make_response
 from flask import request
 from flask import current_app
 from flask import url_for
 from functools import update_wrapper
-
 
 def real_ip(request, proxy_count=0):
     """Remove proxies from IP."""
@@ -28,9 +27,9 @@ def crossdomain(origin=None, methods=None, headers=None,
                 automatic_options=True):
     if methods is not None:
         methods = ', '.join(sorted(x.upper() for x in methods))
-    if headers is not None and not isinstance(headers, basestring):
+    if headers is not None and not isinstance(headers, str):
         headers = ', '.join(x.upper() for x in headers)
-    if not isinstance(origin, basestring):
+    if not isinstance(origin, str):
         origin = ', '.join(origin)
     if isinstance(max_age, timedelta):
         max_age = max_age.total_seconds()

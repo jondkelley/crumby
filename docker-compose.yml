@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  crumby:
+    environment:
+      - UPDATE_SECRET=changeme
+    build: .
+    container_name: crumby
+    ports:
+      - 5001:5001
+    restart: always
+    networks:
+      - crumby_net
+
+networks:
+  crumby_net:
+    driver: bridge

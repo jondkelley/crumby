@@ -3,8 +3,8 @@
 import os
 import base64
 from datetime import datetime
-from urlparse import urlparse
-from urllib import unquote
+from urllib.parse import urlparse
+from urllib.parse import unquote
 from flask import request
 from flask import Response
 from flask import render_template
